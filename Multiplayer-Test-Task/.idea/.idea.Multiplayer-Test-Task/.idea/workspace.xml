@@ -11,7 +11,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Utilities/UI/ButtonBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/16/b74a687b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/IInteractWithPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/PlayerCollisionHandler.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2TBwkpeRCV1AAJqnHKaMvwEcSFP" />
   <component name="ProjectViewState">
@@ -92,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690529930381</updated>
       <workItem from="1690529934784" duration="3833000" />
-      <workItem from="1690537128427" duration="674000" />
+      <workItem from="1690537128427" duration="7675000" />
     </task>
     <servers />
   </component>

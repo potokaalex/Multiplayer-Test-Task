@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 6793336149224157757}
   - component: {fileID: 6793336149224157756}
   - component: {fileID: 6793336149224157747}
+  - component: {fileID: 8145743099350958013}
   m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -268,6 +269,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8145743099350958013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793336149224157746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb6f9f870744acaa311975b5628789a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputDevice: {fileID: 1570618029138775600}
 --- !u!1 &6793336149396683698
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +855,7 @@ GameObject:
   - component: {fileID: 6793336150292439668}
   - component: {fileID: 6793336150292439671}
   - component: {fileID: 6793336150292439670}
+  - component: {fileID: 1570618029138775600}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
@@ -907,6 +922,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1570618029138775600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793336150292439627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1a39a0adfc41f182ab602ef574353a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _background: {fileID: 6793336150292439668}
+  _pointer: {fileID: 6793336150104372445}
 --- !u!1 &6793336150553772559
 GameObject:
   m_ObjectHideFlags: 0
