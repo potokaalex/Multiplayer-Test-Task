@@ -1056,6 +1056,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399176038565316863, guid: 334541a9aec463c4aba902f649ad2014, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 334541a9aec463c4aba902f649ad2014, type: 3}
 --- !u!1 &1280135315
@@ -1104,6 +1108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameUIMediator: {fileID: 815706001}
   _playerStaticData: {fileID: 11400000, guid: 300ec177757f5f847813621bbcda8e2c, type: 2}
+  _spawnPoints:
+  - {fileID: 1823889812}
+  - {fileID: 1466959391}
 --- !u!1 &1466959390
 GameObject:
   m_ObjectHideFlags: 0

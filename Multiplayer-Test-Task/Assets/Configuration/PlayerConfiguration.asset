@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9fe09a5bc5466381e23e867f191cdc, type: 3}
   m_Name: PlayerConfiguration
   m_EditorClassIdentifier: 
-  _objectViewPrefab: {fileID: 1822641521527704979, guid: 334541a9aec463c4aba902f649ad2014, type: 3}
+  _playerObjectPrefab: {fileID: 446554665031276607, guid: 334541a9aec463c4aba902f649ad2014, type: 3}
   _uiMediatorPrefab: {fileID: 8145743099350958013, guid: 837b39f128c0bc94883f11f16b89f7b2, type: 3}
+  _playerColors:
+  - {r: 1, g: 0.37673548, b: 0.37673548, a: 1}
+  - {r: 0.37705708, g: 0.8207547, b: 0.25938943, a: 1}
   _positionVelocity: 10

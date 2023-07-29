@@ -7,13 +7,16 @@ namespace CodeBase.Gameplay.Player
     [CreateAssetMenu(menuName = "Configuration/Player", fileName = "PlayerConfiguration")]
     public class PlayerStaticData : ScriptableObject
     {
-        [SerializeField] private PlayerObjectView _objectViewPrefab;
+        [SerializeField] private PlayerObject _playerObjectPrefab;
         [SerializeField] private PlayerUIMediator _uiMediatorPrefab;
+        [SerializeField] private Color[] _playerColors;
         [SerializeField] private float _positionVelocity;
 
-        public PlayerObjectView ObjectViewPrefab => _objectViewPrefab;
+        public PlayerObject PlayerObjectPrefab => _playerObjectPrefab;
 
         public PlayerUIMediator UIMediatorPrefab => _uiMediatorPrefab;
+
+        public Color[] PlayerColors => _playerColors;
 
         public float PositionVelocity => _positionVelocity;
     }

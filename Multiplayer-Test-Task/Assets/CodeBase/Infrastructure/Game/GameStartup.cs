@@ -1,8 +1,9 @@
-﻿using System;
+﻿using _dev;
 using CodeBase.Gameplay.Player;
 using CodeBase.Gameplay.Player.Object;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Infrastructure.Game.UI;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -14,12 +15,18 @@ namespace CodeBase.Infrastructure.Game
     {
         [SerializeField] private GameUIMediator _gameUIMediator;
         [SerializeField] private PlayerStaticData _playerStaticData;
+        [SerializeField] private Transform[] _spawnPoints;
 
         private void Start()
         {
+            PhotonPeer.RegisterType(typeof(PlayerColor), (byte)CustomRegisteredNetworkTypes.PlayerColor,
+                PlayerColor.Serialize, PlayerColor.Deserialize);
+
             var uiMediator = new PlayerUIFactory(_playerStaticData).CreateUIMediator();
-            var playerObject = new PlayerObjectFactory(_playerStaticData).CreatePlayer(uiMediator);
-            
+            var playerObject =
+                new PlayerObjectFactory(_playerStaticData, _spawnPoints).CreatePlayer(uiMediator,
+                    PhotonNetwork.CurrentRoom.PlayerCount - 1);
+
             uiMediator.InitializeUI(playerObject);
             _gameUIMediator.InitializeUI();
         }
