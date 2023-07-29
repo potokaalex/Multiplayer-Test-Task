@@ -9,12 +9,15 @@ namespace CodeBase.Gameplay.Player
     {
         [SerializeField] private PlayerObject _playerObjectPrefab;
         [SerializeField] private PlayerUIMediator _uiMediatorPrefab;
+        [SerializeField] private int _creationLayerID;
         [SerializeField] private Color[] _playerColors;
         [SerializeField] private float _positionVelocity;
 
         public PlayerObject PlayerObjectPrefab => _playerObjectPrefab;
 
         public PlayerUIMediator UIMediatorPrefab => _uiMediatorPrefab;
+
+        public int CreationLayerID => _creationLayerID;
 
         public Color[] PlayerColors => _playerColors;
 

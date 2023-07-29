@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6793336148660947308}
   - component: {fileID: 6793336148660947310}
+  - component: {fileID: 6497059489983810476}
   m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
@@ -167,6 +168,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6497059489983810476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793336148660947299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9788491f584602a9eea77c6adfb177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 6793336148660947310}
 --- !u!1 &6793336149224157746
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputDevice: {fileID: 1570618029138775600}
+  _shootButton: {fileID: 2726714923528559715}
+  _healthSlider: {fileID: 6497059489983810476}
 --- !u!1 &6793336149396683698
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +463,7 @@ GameObject:
   - component: {fileID: 6793336149644778197}
   - component: {fileID: 6793336149644778196}
   - component: {fileID: 6793336149644778155}
+  - component: {fileID: 2726714923528559715}
   m_Layer: 5
   m_Name: ShootButton
   m_TagString: Untagged
@@ -557,6 +574,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2726714923528559715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793336149644778152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f7a6cea2d14ea2af0a82296b7c41c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectableButton: {fileID: 6793336149644778155}
 --- !u!1 &6793336149938536282
 GameObject:
   m_ObjectHideFlags: 0

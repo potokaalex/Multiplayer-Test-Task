@@ -5,5 +5,9 @@ namespace CodeBase.Gameplay.Player.UI
     public interface IPlayerUIMediator
     {
         public void InitializeUI(PlayerObject playerObject);
+
+        public void DisposeUI();
+        
+        public void SetHealth(int value);
     }
 }

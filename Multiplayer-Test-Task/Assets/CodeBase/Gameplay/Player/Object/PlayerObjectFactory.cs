@@ -1,5 +1,8 @@
-﻿using CodeBase.Gameplay.Player.Movement;
+﻿using CodeBase.Gameplay.Bullet;
+using CodeBase.Gameplay.Player.Health;
+using CodeBase.Gameplay.Player.Movement;
 using CodeBase.Gameplay.Player.UI;
+using CodeBase.Gameplay.Player.Weapon;
 using Photon.Pun;
 using UnityEngine;
 
@@ -16,10 +19,10 @@ namespace CodeBase.Gameplay.Player.Object
             _spawnPoints = spawnPoints;
         }
 
-        public PlayerObject CreatePlayer(IPlayerUIMediator uiMediator, int index)
+        public PlayerObject CreatePlayer(IPlayerUIMediator uiMediator, BulletFactory bulletFactory, int index)
         {
             var gameObject = NetworkInstantiate(index);
-            var playerObject = CreatePlayerObject(gameObject, uiMediator);
+            var playerObject = CreatePlayerObject(gameObject, uiMediator, bulletFactory);
 
             return playerObject;
         }
@@ -34,13 +37,16 @@ namespace CodeBase.Gameplay.Player.Object
             return PhotonNetwork.Instantiate(prefabName, position, Quaternion.identity, 0, instantiateData);
         }
 
-        private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUIMediator uiMediator)
+        private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUIMediator uiMediator,
+            BulletFactory bulletFactory)
         {
             var objectData = gameObject.GetComponent<PlayerObjectData>();
             var playerObject = gameObject.GetComponent<PlayerObject>();
             var movement = new PlayerMovement(objectData.Rigidbody, _data.PositionVelocity);
+            var weapon = new PlayerWeapon(bulletFactory, objectData.BulletSpawnPoint, objectData.Rigidbody, 300, -1);
+            var health = new PlayerHealth(5, 5);
 
-            playerObject.Constructor(uiMediator, movement);
+            playerObject.Constructor(uiMediator, movement, weapon, health, _data.CreationLayerID);
 
             return playerObject;
         }
