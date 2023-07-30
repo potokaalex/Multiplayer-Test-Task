@@ -1,6 +1,6 @@
 ﻿namespace CodeBase.Infrastructure
 {
-    public class CustomRegisteredNetworkTypes
+    public static class CustomRegisteredNetworkTypes
     {
         public const int PlayerColor = 100;
     }

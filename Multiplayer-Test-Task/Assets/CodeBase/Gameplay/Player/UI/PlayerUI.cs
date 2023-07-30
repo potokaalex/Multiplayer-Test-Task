@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace CodeBase.Gameplay.Player.UI
 {
-    public class PlayerUIMediator : MonoBehaviour, IPlayerUIMediator
+    public class PlayerUI : MonoBehaviour, IPlayerUI
     {
         [SerializeField] private InputDevice _inputDevice;
         [SerializeField] private ShootButton _shootButton;
@@ -15,7 +15,9 @@ namespace CodeBase.Gameplay.Player.UI
         [SerializeField] private CoinsCountText _coinsCountText;
         private PlayerObject _playerObject;
 
-        public void InitializeUI(PlayerObject playerObject)
+        public bool IsBattle;
+
+        public void Initialize(PlayerObject playerObject)
         {
             _playerObject = playerObject;
 
@@ -23,7 +25,7 @@ namespace CodeBase.Gameplay.Player.UI
             _shootButton.Initialize(this);
         }
 
-        public void DisposeUI()
+        public void Dispose()
         {
             _shootButton.Dispose();
         }
@@ -32,10 +34,18 @@ namespace CodeBase.Gameplay.Player.UI
 
         public void SetCoinsCount(int value) => _coinsCountText.SetCoinsCount(value);
 
-        public void Move(Vector2 inputVector) => _playerObject.Move(inputVector);
+        public void Move(Vector2 inputVector)
+        {
+            if (IsBattle)
+                _playerObject.Move(inputVector);
+        }
 
         public void Rotate(Vector2 inputVector) => _playerObject.Rotate(inputVector);
 
-        public void Shoot() => _playerObject.Shoot();
+        public void Shoot()
+        {
+            if (IsBattle)
+                _playerObject.Shoot();
+        }
     }
 }

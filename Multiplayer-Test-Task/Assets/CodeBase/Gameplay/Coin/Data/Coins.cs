@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using CodeBase.Gameplay.Coin.Object;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Coin
+namespace CodeBase.Gameplay.Coin.Data
 {
     public class Coins
     {

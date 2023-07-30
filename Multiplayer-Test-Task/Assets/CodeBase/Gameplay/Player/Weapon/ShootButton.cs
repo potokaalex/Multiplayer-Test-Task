@@ -10,16 +10,16 @@ namespace CodeBase.Gameplay.Player.Weapon
         [SerializeField] private Button _selectableButton;
         
         private PlayerObject _playerObject;
-        private PlayerUIMediator _uiMediator;
+        private PlayerUI _ui;
 
-        public void Initialize(PlayerUIMediator uiMediator)
+        public void Initialize(PlayerUI ui)
         {
-            _uiMediator = uiMediator;
+            _ui = ui;
             _selectableButton.onClick.AddListener(Shoot);
         }
 
         public void Dispose() => _selectableButton.onClick.RemoveListener(Shoot);
 
-        private void Shoot() => _uiMediator.Shoot();
+        private void Shoot() => _ui.Shoot();
     }
 }

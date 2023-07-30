@@ -7,7 +7,7 @@ namespace CodeBase.Gameplay.Bullet
     {
         private BulletFactory _factory;
 
-        public void Construct(BulletFactory factory) => _factory = factory;
+        public void Initialize(BulletFactory factory) => _factory = factory;
 
         public BulletObject CreateBullet(Vector3 position, int damageValue) =>
             _factory.NetworkCreateBullet(this, position, damageValue);

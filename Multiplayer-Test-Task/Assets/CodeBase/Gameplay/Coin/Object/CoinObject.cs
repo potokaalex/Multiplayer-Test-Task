@@ -1,9 +1,10 @@
-﻿using CodeBase.Gameplay.Player.Interact;
+﻿using CodeBase.Gameplay.Coin.Network;
+using CodeBase.Gameplay.Player.Interact;
 using CodeBase.Gameplay.Player.Object;
 using Photon.Pun;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Coin
+namespace CodeBase.Gameplay.Coin.Object
 {
     public class CoinObject : MonoBehaviour, IInteractWithPlayer
     {

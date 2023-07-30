@@ -13,6 +13,7 @@ namespace CodeBase.Gameplay.Player.Object
     {
         private readonly PlayerStaticData _data;
         private readonly Transform[] _spawnPoints;
+        private PlayerObject _playerObject;
 
         public PlayerObjectFactory(PlayerStaticData data, Transform[] spawnPoints)
         {
@@ -20,10 +21,10 @@ namespace CodeBase.Gameplay.Player.Object
             _spawnPoints = spawnPoints;
         }
 
-        public PlayerObject CreatePlayer(IPlayerUIMediator uiMediator, BulletNetwork bulletNetwork, int index)
+        public PlayerObject CreatePlayer(IPlayerUI ui, BulletNetwork bulletNetwork, int index)
         {
             var gameObject = NetworkInstantiate(index);
-            var playerObject = CreatePlayerObject(gameObject, uiMediator, bulletNetwork);
+            var playerObject = CreatePlayerObject(gameObject, ui, bulletNetwork);
 
             return playerObject;
         }
@@ -38,7 +39,7 @@ namespace CodeBase.Gameplay.Player.Object
             return PhotonNetwork.Instantiate(prefabName, position, Quaternion.identity, 0, instantiateData);
         }
 
-        private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUIMediator uiMediator,
+        private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUI ui,
             BulletNetwork bulletNetwork)
         {
             var objectData = gameObject.GetComponent<PlayerObjectData>();
@@ -48,9 +49,13 @@ namespace CodeBase.Gameplay.Player.Object
             var health = new PlayerHealth(5, 5);
             var coins = new PlayerCoins(100, 0);
 
-            playerObject.Constructor(uiMediator, movement, weapon, health, coins, _data.CreationLayerID);
+            playerObject.Constructor(ui, movement, weapon, health, coins, _data.CreationLayerID);
+
+            _playerObject = playerObject;
 
             return playerObject;
         }
+
+        public PlayerObject GetPlayer() => _playerObject;
     }
 }

@@ -1,9 +1,11 @@
-﻿using Photon.Pun;
+﻿using CodeBase.Gameplay.Coin.Data;
+using CodeBase.Gameplay.Coin.Network;
+using Photon.Pun;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Coin
+namespace CodeBase.Gameplay.Coin.Spawner
 {
-    public class CoinSpawner : MonoBehaviourPun
+    public class CoinSpawner : MonoBehaviour
     {
         private CoinStaticData _staticData;
         private CoinNetwork _network;

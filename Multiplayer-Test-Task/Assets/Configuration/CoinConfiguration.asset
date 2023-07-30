@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dedb87619ca41ca8ebf8909ae3ead0b, type: 3}
   m_Name: CoinConfiguration
   m_EditorClassIdentifier: 
+  CoinSpawnerPrefab: {fileID: 1557896395927645023, guid: 06c1aca7ee42fee45a1c3b2f3d18dde1, type: 3}
   CoinObjectPrefab: {fileID: -6946670325466718260, guid: 45cd7a41dcf79444cad9590dd54e2ca8, type: 3}
   SpawnRateSeconds: 3

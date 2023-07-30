@@ -7,11 +7,11 @@ namespace CodeBase.Gameplay.Player.Input
     {
         private protected Vector2 InputVectorDefaultValue;
         private protected Vector2 InputVector;
-        private PlayerUIMediator _uiMediator;
+        private PlayerUI _ui;
 
-        public void Initialize(PlayerUIMediator uiMediator)
+        public void Initialize(PlayerUI ui)
         {
-            _uiMediator = uiMediator;
+            _ui = ui;
             InputVectorDefaultValue = default;
         }
 
@@ -20,8 +20,8 @@ namespace CodeBase.Gameplay.Player.Input
             if (InputVector == InputVectorDefaultValue)
                 return;
 
-            _uiMediator.Move(InputVector);
-            _uiMediator.Rotate(InputVector);
+            _ui.Move(InputVector);
+            _ui.Rotate(InputVector);
         }
     }
 }

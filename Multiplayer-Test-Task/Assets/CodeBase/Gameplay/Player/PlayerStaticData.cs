@@ -8,14 +8,14 @@ namespace CodeBase.Gameplay.Player
     public class PlayerStaticData : ScriptableObject
     {
         [SerializeField] private PlayerObject _playerObjectPrefab;
-        [SerializeField] private PlayerUIMediator _uiMediatorPrefab;
+        [SerializeField] private PlayerUI _uiPrefab;
         [SerializeField] private int _creationLayerID;
         [SerializeField] private Color[] _playerColors;
         [SerializeField] private float _positionVelocity;
 
         public PlayerObject PlayerObjectPrefab => _playerObjectPrefab;
 
-        public PlayerUIMediator UIMediatorPrefab => _uiMediatorPrefab;
+        public PlayerUI UIPrefab => _uiPrefab;
 
         public int CreationLayerID => _creationLayerID;
 

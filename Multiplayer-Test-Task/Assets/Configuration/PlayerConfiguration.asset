@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerConfiguration
   m_EditorClassIdentifier: 
   _playerObjectPrefab: {fileID: 446554665031276607, guid: 334541a9aec463c4aba902f649ad2014, type: 3}
-  _uiMediatorPrefab: {fileID: 8145743099350958013, guid: 837b39f128c0bc94883f11f16b89f7b2, type: 3}
+  _uiPrefab: {fileID: 8145743099350958013, guid: 837b39f128c0bc94883f11f16b89f7b2, type: 3}
   _creationLayerID: 6
   _playerColors:
   - {r: 1, g: 0.674681, b: 0, a: 1}

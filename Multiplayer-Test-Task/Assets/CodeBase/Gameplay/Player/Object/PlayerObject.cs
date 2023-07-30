@@ -12,21 +12,21 @@ namespace CodeBase.Gameplay.Player.Object
     {
         [SerializeField] private PlayerObjectData _objectData;
 
-        private IPlayerUIMediator _uiMediator;
+        private IPlayerUI _ui;
         private PlayerMovement _movement;
         private IPlayerWeapon _weapon;
         private PlayerHealth _health;
         private PlayerCoins _coins;
 
-        public void Constructor(IPlayerUIMediator uiMediator, PlayerMovement movement, IPlayerWeapon weapon,
-            PlayerHealth health,PlayerCoins coins, int layerID)
+        public void Constructor(IPlayerUI ui, PlayerMovement movement, IPlayerWeapon weapon,
+            PlayerHealth health, PlayerCoins coins, int layerID)
         {
-            _uiMediator = uiMediator;
+            _ui = ui;
             _movement = movement;
             _weapon = weapon;
             _health = health;
             _coins = coins;
-            
+
             SetLayer(layerID);
         }
 
@@ -51,7 +51,7 @@ namespace CodeBase.Gameplay.Player.Object
                 return;
 
             _coins.Change(1);
-            _uiMediator.SetCoinsCount(_coins.Get());
+            _ui.SetCoinsCount(_coins.Get());
         }
 
         [PunRPC]
@@ -61,7 +61,10 @@ namespace CodeBase.Gameplay.Player.Object
                 return;
 
             _health.Change(value);
-            _uiMediator.SetHealth(_health.Get());
+            _ui.SetHealth(_health.Get());
+            
+            //if(_health.Get() <= 0)
+                //+state
         }
 
         private void SetLayer(int layerID) => gameObject.layer = layerID;

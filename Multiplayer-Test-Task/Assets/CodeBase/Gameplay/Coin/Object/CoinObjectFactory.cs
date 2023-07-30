@@ -1,14 +1,16 @@
-﻿using Photon.Pun;
+﻿using CodeBase.Gameplay.Coin.Data;
+using CodeBase.Gameplay.Coin.Network;
+using Photon.Pun;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Coin
+namespace CodeBase.Gameplay.Coin.Object
 {
-    public class CoinFactory
+    public class CoinObjectFactory
     {
         private readonly CoinStaticData _staticData;
         private readonly Transform[] _spawnPoints;
 
-        public CoinFactory(CoinStaticData staticData, Transform[] spawnPoints)
+        public CoinObjectFactory(CoinStaticData staticData, Transform[] spawnPoints)
         {
             _staticData = staticData;
             _spawnPoints = spawnPoints;

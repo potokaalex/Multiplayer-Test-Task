@@ -1,77 +1,55 @@
-﻿using System;
-using CodeBase.Gameplay.Bullet;
-using CodeBase.Gameplay.Coin;
-using CodeBase.Gameplay.Player;
-using CodeBase.Gameplay.Player.Object;
-using CodeBase.Gameplay.Player.UI;
+﻿using CodeBase.Infrastructure.Game.States;
 using CodeBase.Infrastructure.Game.UI;
-using ExitGames.Client.Photon;
-using Photon.Pun;
-using Photon.Realtime;
+using CodeBase.Infrastructure.Services.SceneData;
+using CodeBase.Infrastructure.Services.StateMachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
-//TODO: Refactoring network communications
+//TODO: Refactoring player network
 
 namespace CodeBase.Infrastructure.Game
 {
-    public class GameStartup : MonoBehaviourPunCallbacks
+    public class GameStartup : MonoBehaviour
     {
+        [SerializeField] private GameSceneData _sceneData;
         [SerializeField] private GameUIMediator _gameUIMediator;
-        [SerializeField] private PlayerStaticData _playerStaticData;
-        [SerializeField] private BulletStaticData _bulletStaticData;
-        [SerializeField] private CoinStaticData _coinStaticData;
-        [SerializeField] private Transform[] _coinSpawnPoints;
-        [SerializeField] private Transform[] _spawnPoints;
-        [SerializeField] private CoinSpawner _coinSpawner;
-        [SerializeField] private CoinNetwork _coinNetwork;
-        [SerializeField] private BulletNetwork _bulletNetwork;
-        private IPlayerUIMediator _uiMediator;
+        private IStateMachine _stateMachine;
+        private IStateFactory _stateFactory;
+        private ISceneDataProvider _sceneDataProvider;
+
+        [Inject]
+        private void Constructor(IStateMachine stateMachine, IStateFactory stateFactory,
+            ISceneDataProvider sceneDataProvider)
+        {
+            _stateMachine = stateMachine;
+            _stateFactory = stateFactory;
+            _sceneDataProvider = sceneDataProvider;
+        }
 
         private void Start()
         {
+            /*
             var coins = new Coins(_coinSpawnPoints.Length);
             var coinFactory = new CoinFactory(_coinStaticData, _coinSpawnPoints);
             _coinNetwork.Constructor(coinFactory, coins);
             _coinSpawner.Constructor(_coinStaticData, _coinNetwork, coins);
-
-            PhotonPeer.RegisterType(typeof(PlayerColor), CustomRegisteredNetworkTypes.PlayerColor,
-                PlayerColor.Serialize, PlayerColor.Deserialize);
-            
-            var bulletFactory = new BulletFactory(_bulletStaticData);
-            _bulletNetwork.Construct(bulletFactory);
-            
-            _uiMediator = new PlayerUIFactory(_playerStaticData).CreateUIMediator();
-            var playerObject =
-                new PlayerObjectFactory(_playerStaticData, _spawnPoints).CreatePlayer(_uiMediator, _bulletNetwork,
-                    PhotonNetwork.CurrentRoom.PlayerCount - 1);
-
-            _uiMediator.InitializeUI(playerObject);
+            */
             _gameUIMediator.InitializeUI();
+            InitializeSceneDataProvider();
+            InitializeStateMachine();
+
+            _stateMachine.SwitchTo<WaitingState>();
         }
 
-        private void OnDestroy()
-        {
-            _gameUIMediator.DisposeUI();
-            _uiMediator.DisposeUI();
-        }
+        private void OnDestroy() => _gameUIMediator.DisposeUI();
 
-        public override void OnPlayerEnteredRoom(Player newPlayer)
-        {
-            base.OnPlayerEnteredRoom(newPlayer);
-            UnityEngine.Debug.Log($"Player {newPlayer.NickName} entered room!");
-        }
+        private void InitializeSceneDataProvider() => _sceneDataProvider.Initialize(_sceneData);
 
-        public override void OnPlayerLeftRoom(Player otherPlayer)
+        private void InitializeStateMachine()
         {
-            base.OnPlayerLeftRoom(otherPlayer);
-            UnityEngine.Debug.Log($"Player {otherPlayer.NickName} left room!");
-        }
-
-        public override void OnLeftRoom()
-        {
-            base.OnLeftRoom();
-            SceneManager.LoadScene("Lobby");
+            _stateMachine.Initialize(
+                _stateFactory.Create<WaitingState>(),
+                _stateFactory.Create<BattleState>());
         }
     }
 }

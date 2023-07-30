@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ad8085ba9149fab28c657e360ba82f, type: 3}
   m_Name: BulletConfiguration
   m_EditorClassIdentifier: 
+  BulletNetworkPrefab: {fileID: 4421725966335124068, guid: 29c59224bd02fb747882ae1d2d3e526e, type: 3}
   BulletObjectPrefab: {fileID: -8854007109306650001, guid: 06e9e8be74460ce4b964533cc8a4b32d, type: 3}
   CreationLayerID: 7
