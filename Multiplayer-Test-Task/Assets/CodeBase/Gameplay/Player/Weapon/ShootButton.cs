@@ -20,9 +20,6 @@ namespace CodeBase.Gameplay.Player.Weapon
 
         public void Dispose() => _selectableButton.onClick.RemoveListener(Shoot);
 
-        private void Shoot()
-        {
-            _uiMediator.Shoot();
-        }
+        private void Shoot() => _uiMediator.Shoot();
     }
 }

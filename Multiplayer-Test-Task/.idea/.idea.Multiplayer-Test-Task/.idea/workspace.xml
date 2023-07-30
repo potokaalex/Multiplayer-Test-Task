@@ -11,30 +11,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/03/7c89714c/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/16/b74a687b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/36/411e512a/Vector2Int.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/44/573c1737/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/cb/62297ba3/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/IInteractWithPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/PlayerCollisionHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Alex/source/Projects/Multiplayer-Test-Task/Multiplayer-Test-Task/Assets/CodeBase/Gameplay/Player/PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://PlayerColor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2TBwkpeRCV1AAJqnHKaMvwEcSFP" />
   <component name="ProjectViewState">
@@ -119,7 +103,9 @@
       <workItem from="1690537128427" duration="9278000" />
       <workItem from="1690553657039" duration="8444000" />
       <workItem from="1690611611933" duration="19464000" />
-      <workItem from="1690636489658" duration="2832000" />
+      <workItem from="1690636489658" duration="13941000" />
+      <workItem from="1690696916150" duration="4905000" />
+      <workItem from="1690701886957" duration="6459000" />
     </task>
     <servers />
   </component>

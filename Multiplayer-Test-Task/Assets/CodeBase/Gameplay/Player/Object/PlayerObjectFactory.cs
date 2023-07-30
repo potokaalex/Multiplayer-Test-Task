@@ -1,4 +1,5 @@
 ﻿using CodeBase.Gameplay.Bullet;
+using CodeBase.Gameplay.Player.Coins;
 using CodeBase.Gameplay.Player.Health;
 using CodeBase.Gameplay.Player.Movement;
 using CodeBase.Gameplay.Player.UI;
@@ -45,8 +46,9 @@ namespace CodeBase.Gameplay.Player.Object
             var movement = new PlayerMovement(objectData.Rigidbody, _data.PositionVelocity);
             var weapon = new PlayerWeapon(bulletFactory, objectData.BulletSpawnPoint, objectData.Rigidbody, 300, -1);
             var health = new PlayerHealth(5, 5);
+            var coins = new PlayerCoins(100, 0);
 
-            playerObject.Constructor(uiMediator, movement, weapon, health, _data.CreationLayerID);
+            playerObject.Constructor(uiMediator, movement, weapon, health, coins, _data.CreationLayerID);
 
             return playerObject;
         }

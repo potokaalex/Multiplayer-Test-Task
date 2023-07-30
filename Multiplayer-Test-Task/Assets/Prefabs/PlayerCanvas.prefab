@@ -298,6 +298,7 @@ MonoBehaviour:
   _inputDevice: {fileID: 1570618029138775600}
   _shootButton: {fileID: 2726714923528559715}
   _healthSlider: {fileID: 6497059489983810476}
+  _coinsCountText: {fileID: 5677720705807236479}
 --- !u!1 &6793336149396683698
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +310,7 @@ GameObject:
   - component: {fileID: 6793336149396683699}
   - component: {fileID: 6793336149396683709}
   - component: {fileID: 6793336149396683708}
+  - component: {fileID: 5677720705807236479}
   m_Layer: 5
   m_Name: CoinsCountImage
   m_TagString: Untagged
@@ -375,6 +377,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5677720705807236479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793336149396683698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b0a6bbcf2e4f2dbc415fd10ae97c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 6793336149938536260}
 --- !u!1 &6793336149495335990
 GameObject:
   m_ObjectHideFlags: 0

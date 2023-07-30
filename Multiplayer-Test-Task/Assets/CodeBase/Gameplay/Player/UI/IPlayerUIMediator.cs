@@ -9,5 +9,7 @@ namespace CodeBase.Gameplay.Player.UI
         public void DisposeUI();
         
         public void SetHealth(int value);
+        
+        public void SetCoinsCount(int get);
     }
 }

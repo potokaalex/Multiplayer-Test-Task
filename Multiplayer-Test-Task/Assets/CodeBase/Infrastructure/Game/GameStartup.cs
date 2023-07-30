@@ -1,5 +1,7 @@
-﻿using _dev;
+﻿using System;
+using _dev;
 using CodeBase.Gameplay.Bullet;
+using CodeBase.Gameplay.Coin;
 using CodeBase.Gameplay.Player;
 using CodeBase.Gameplay.Player.Object;
 using CodeBase.Gameplay.Player.UI;
@@ -19,11 +21,20 @@ namespace CodeBase.Infrastructure.Game
         [SerializeField] private GameUIMediator _gameUIMediator;
         [SerializeField] private PlayerStaticData _playerStaticData;
         [SerializeField] private BulletStaticData _bulletStaticData;
+        [SerializeField] private CoinStaticData _coinStaticData;
+        [SerializeField] private Transform[] _coinSpawnPoints;
         [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private CoinSpawner _coinSpawner;
+        [SerializeField] private CoinNetwork _coinNetwork;
         private IPlayerUIMediator _uiMediator;
 
         private void Start()
         {
+            var coins = new Coins(_coinSpawnPoints.Length);
+            var coinFactory = new CoinFactory(_coinStaticData, _coinSpawnPoints);
+            _coinNetwork.Constructor(coinFactory, coins);
+            _coinSpawner.Constructor(_coinStaticData, _coinNetwork, coins);
+
             PhotonPeer.RegisterType(typeof(PlayerColor), (byte)CustomRegisteredNetworkTypes.PlayerColor,
                 PlayerColor.Serialize, PlayerColor.Deserialize);
 

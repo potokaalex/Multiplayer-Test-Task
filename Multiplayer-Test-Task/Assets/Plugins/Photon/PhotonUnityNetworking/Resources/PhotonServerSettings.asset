@@ -38,6 +38,13 @@ MonoBehaviour:
   - DestroyRpc
   - ChangeHealth
   - Shoot
+  - AddCoin
+  - RpcSpawn
+  - Spawn
+  - CreateCoin
+  - DestroyCoin
+  - RegisterCoin
+  - UnregisterCoin
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
