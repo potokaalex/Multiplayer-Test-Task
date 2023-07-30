@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CoinConfiguration
   m_EditorClassIdentifier: 
   CoinObjectPrefab: {fileID: -6946670325466718260, guid: 45cd7a41dcf79444cad9590dd54e2ca8, type: 3}
-  SpawnRateSeconds: 1
+  SpawnRateSeconds: 3

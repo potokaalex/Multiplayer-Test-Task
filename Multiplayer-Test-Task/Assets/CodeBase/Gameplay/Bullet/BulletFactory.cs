@@ -12,15 +12,17 @@ namespace CodeBase.Gameplay.Bullet
             _staticData = staticData;
         }
 
-        public BulletObject CreateBullet(Vector3 position, int damageValue)
+        public BulletObject NetworkCreateBullet(BulletNetwork network, Vector3 position, int damageValue)
         {
             var gameObject = NetworkInstantiate(position);
             var bulletObject = gameObject.GetComponent<BulletObject>();
 
-            bulletObject.Constructor(damageValue, _staticData.CreationLayerID);
+            bulletObject.Constructor(network, damageValue, _staticData.CreationLayerID);
 
             return bulletObject;
         }
+
+        public void NetworkDestroyBullet(BulletObject bullet) => PhotonNetwork.Destroy(bullet.gameObject);
 
         private GameObject NetworkInstantiate(Vector3 position) =>
             PhotonNetwork.Instantiate(_staticData.BulletObjectPrefab.name, position, Quaternion.identity);

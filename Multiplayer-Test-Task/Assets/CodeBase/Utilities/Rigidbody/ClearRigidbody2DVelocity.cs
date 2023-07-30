@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _dev
+namespace CodeBase.Utilities.Rigidbody
 {
     public class ClearRigidbody2DVelocity : MonoBehaviour
     {

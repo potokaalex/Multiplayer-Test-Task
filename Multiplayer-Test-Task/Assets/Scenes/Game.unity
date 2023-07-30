@@ -1165,6 +1165,7 @@ GameObject:
   - component: {fileID: 1280135317}
   - component: {fileID: 1280135318}
   - component: {fileID: 1280135319}
+  - component: {fileID: 1280135320}
   m_Layer: 0
   m_Name: Startup
   m_TagString: Untagged
@@ -1218,6 +1219,7 @@ MonoBehaviour:
   - {fileID: 1466959391}
   _coinSpawner: {fileID: 1728783142}
   _coinNetwork: {fileID: 1280135318}
+  _bulletNetwork: {fileID: 1280135320}
 --- !u!114 &1280135318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,6 +1254,18 @@ MonoBehaviour:
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1280135320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280135315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc2fdb42e7b4cc9a1c226486211644e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1289869450
 GameObject:
   m_ObjectHideFlags: 0

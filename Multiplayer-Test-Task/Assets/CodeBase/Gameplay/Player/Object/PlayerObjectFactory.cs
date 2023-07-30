@@ -20,10 +20,10 @@ namespace CodeBase.Gameplay.Player.Object
             _spawnPoints = spawnPoints;
         }
 
-        public PlayerObject CreatePlayer(IPlayerUIMediator uiMediator, BulletFactory bulletFactory, int index)
+        public PlayerObject CreatePlayer(IPlayerUIMediator uiMediator, BulletNetwork bulletNetwork, int index)
         {
             var gameObject = NetworkInstantiate(index);
-            var playerObject = CreatePlayerObject(gameObject, uiMediator, bulletFactory);
+            var playerObject = CreatePlayerObject(gameObject, uiMediator, bulletNetwork);
 
             return playerObject;
         }
@@ -39,12 +39,12 @@ namespace CodeBase.Gameplay.Player.Object
         }
 
         private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUIMediator uiMediator,
-            BulletFactory bulletFactory)
+            BulletNetwork bulletNetwork)
         {
             var objectData = gameObject.GetComponent<PlayerObjectData>();
             var playerObject = gameObject.GetComponent<PlayerObject>();
             var movement = new PlayerMovement(objectData.Rigidbody, _data.PositionVelocity);
-            var weapon = new PlayerWeapon(bulletFactory, objectData.BulletSpawnPoint, objectData.Rigidbody, 300, -1);
+            var weapon = new PlayerWeapon(bulletNetwork, objectData.BulletSpawnPoint, objectData.Rigidbody, 300, -1);
             var health = new PlayerHealth(5, 5);
             var coins = new PlayerCoins(100, 0);
 

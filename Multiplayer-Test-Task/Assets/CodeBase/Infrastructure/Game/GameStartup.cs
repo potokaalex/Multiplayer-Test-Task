@@ -1,5 +1,4 @@
 ﻿using System;
-using _dev;
 using CodeBase.Gameplay.Bullet;
 using CodeBase.Gameplay.Coin;
 using CodeBase.Gameplay.Player;
@@ -26,6 +25,7 @@ namespace CodeBase.Infrastructure.Game
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private CoinSpawner _coinSpawner;
         [SerializeField] private CoinNetwork _coinNetwork;
+        [SerializeField] private BulletNetwork _bulletNetwork;
         private IPlayerUIMediator _uiMediator;
 
         private void Start()
@@ -35,14 +35,15 @@ namespace CodeBase.Infrastructure.Game
             _coinNetwork.Constructor(coinFactory, coins);
             _coinSpawner.Constructor(_coinStaticData, _coinNetwork, coins);
 
-            PhotonPeer.RegisterType(typeof(PlayerColor), (byte)CustomRegisteredNetworkTypes.PlayerColor,
+            PhotonPeer.RegisterType(typeof(PlayerColor), CustomRegisteredNetworkTypes.PlayerColor,
                 PlayerColor.Serialize, PlayerColor.Deserialize);
-
+            
             var bulletFactory = new BulletFactory(_bulletStaticData);
-
+            _bulletNetwork.Construct(bulletFactory);
+            
             _uiMediator = new PlayerUIFactory(_playerStaticData).CreateUIMediator();
             var playerObject =
-                new PlayerObjectFactory(_playerStaticData, _spawnPoints).CreatePlayer(_uiMediator, bulletFactory,
+                new PlayerObjectFactory(_playerStaticData, _spawnPoints).CreatePlayer(_uiMediator, _bulletNetwork,
                     PhotonNetwork.CurrentRoom.PlayerCount - 1);
 
             _uiMediator.InitializeUI(playerObject);
