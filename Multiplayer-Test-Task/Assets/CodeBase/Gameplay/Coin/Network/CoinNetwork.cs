@@ -1,30 +1,21 @@
-﻿using CodeBase.Gameplay.Coin.Data;
-using CodeBase.Gameplay.Coin.Object;
+﻿using CodeBase.Gameplay.Coin.Object;
 using Photon.Pun;
+using UnityEngine;
 
 namespace CodeBase.Gameplay.Coin.Network
 {
     public class CoinNetwork : MonoBehaviourPun
     {
-        private CoinObjectFactory _objectFactory;
-        private Coins _coins;
+        public bool IsMasterClient() => PhotonNetwork.IsMasterClient;
 
-        public void Initialize(CoinObjectFactory objectFactory, Coins coins)
+        public CoinObject CreateCoin(CoinObject coinObjectPrefab, Vector3 position)
         {
-            _objectFactory = objectFactory;
-            _coins = coins;
+            var coinGameObject = PhotonNetwork.Instantiate(coinObjectPrefab.name, position, Quaternion.identity);
+            var coin = coinGameObject.GetComponent<CoinObject>();
+
+            return coin;
         }
 
-        public void CreateCoin()
-        {
-            var coin = _objectFactory.NetworkCreateCoin(this, _coins.GetCoinId());
-            _coins.RegisterCoin(coin);
-        }
-
-        public void DestroyCoin(CoinObject coinObject)
-        {
-            _coins.UnregisterCoin(coinObject.Id);
-            _objectFactory.NetworkDestroyCoin(coinObject);
-        }
+        public void DestroyCoin(CoinObject coinObject) => PhotonNetwork.Destroy(coinObject.gameObject);
     }
 }

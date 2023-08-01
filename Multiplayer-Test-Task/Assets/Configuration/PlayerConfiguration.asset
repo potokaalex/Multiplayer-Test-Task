@@ -19,3 +19,6 @@ MonoBehaviour:
   - {r: 1, g: 0.674681, b: 0, a: 1}
   - {r: 0.367051, g: 0.8396226, b: 0.2415895, a: 1}
   _positionVelocity: 10
+  _bulletForceValue: 300
+  _bulletDamageValue: -1
+  _maxHealth: 5

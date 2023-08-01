@@ -1,22 +1,19 @@
 ﻿using CodeBase.Gameplay.Coin.Data;
-using CodeBase.Gameplay.Coin.Network;
-using Photon.Pun;
+using CodeBase.Gameplay.Coin.Object;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Coin.Spawner
 {
     public class CoinSpawner : MonoBehaviour
     {
+        private CoinObjectFactory _coinObjectFactory;
         private CoinStaticData _staticData;
-        private CoinNetwork _network;
-        private Coins _coins;
         private float _timeToSpawn;
 
-        public void Constructor(CoinStaticData staticData, CoinNetwork network, Coins coins)
+        public void Constructor(CoinObjectFactory coinObjectFactory, CoinStaticData staticData)
         {
+            _coinObjectFactory = coinObjectFactory;
             _staticData = staticData;
-            _network = network;
-            _coins = coins;
         }
 
         private void FixedUpdate()
@@ -29,15 +26,7 @@ namespace CodeBase.Gameplay.Coin.Spawner
 
             _timeToSpawn = _staticData.SpawnRateSeconds;
 
-            if (!PhotonNetwork.IsMasterClient)
-                return;
-
-            //TODO: sync on all clients
-            
-            if (_coins.CurrentCount >= _coins.MaxCount)
-                return;
-
-            _network.CreateCoin();
+            _coinObjectFactory.CreateCoin();
         }
     }
 }

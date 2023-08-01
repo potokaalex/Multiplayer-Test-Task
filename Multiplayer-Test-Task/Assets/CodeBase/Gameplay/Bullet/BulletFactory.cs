@@ -1,30 +1,35 @@
-﻿using Photon.Pun;
+﻿using CodeBase.Gameplay.Player.Network;
+using CodeBase.Infrastructure.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Bullet
 {
     public class BulletFactory
     {
-        private readonly BulletStaticData _staticData;
+        private readonly IDataProvider _dataProvider;
+        private readonly BulletNetwork _bulletNetwork;
+        private readonly PlayerNetwork _playerNetwork;
+        private BulletStaticData _staticData;
 
-        public BulletFactory(BulletStaticData staticData)
+        public BulletFactory(IDataProvider dataProvider, BulletNetwork bulletNetwork, PlayerNetwork playerNetwork)
         {
-            _staticData = staticData;
+            _dataProvider = dataProvider;
+            _bulletNetwork = bulletNetwork;
+            _playerNetwork = playerNetwork;
         }
 
-        public BulletObject NetworkCreateBullet(BulletNetwork network, Vector3 position, int damageValue)
+        public void Initialize() => _staticData = _dataProvider.Get<BulletStaticData>();
+
+        public BulletObject CreateBullet(Vector3 position)
         {
-            var gameObject = NetworkInstantiate(position);
+            var gameObject = _bulletNetwork.CreateBullet(_staticData.BulletObjectPrefab, position);
             var bulletObject = gameObject.GetComponent<BulletObject>();
 
-            bulletObject.Constructor(network, damageValue, _staticData.CreationLayerID);
+            bulletObject.Constructor(this, _playerNetwork, _staticData.CreationLayerID);
 
             return bulletObject;
         }
 
-        public void NetworkDestroyBullet(BulletObject bullet) => PhotonNetwork.Destroy(bullet.gameObject);
-
-        private GameObject NetworkInstantiate(Vector3 position) =>
-            PhotonNetwork.Instantiate(_staticData.BulletObjectPrefab.name, position, Quaternion.identity);
+        public void DestroyBullet(BulletObject bullet) => _bulletNetwork.DestroyBullet(bullet);
     }
 }

@@ -130,10 +130,8 @@ GameObject:
   - component: {fileID: 5348561769740505992}
   - component: {fileID: 7399176038565316863}
   - component: {fileID: 7037603764779252543}
-  - component: {fileID: 1326311312359451934}
   - component: {fileID: 446554665031276607}
   - component: {fileID: 7359363697664665583}
-  - component: {fileID: 8448089740735747547}
   - component: {fileID: 3785510884530324478}
   m_Layer: 0
   m_Name: Player
@@ -286,21 +284,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &1326311312359451934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5348561769740505995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8e901975e745bcbb7cf103e3443320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 5348561769740505992}
-  _spriteRenderer: {fileID: 5348561769740505993}
-  _bulletSpawnPoint: {fileID: 5348561768095185438}
 --- !u!114 &446554665031276607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a592bbb66e446fcbde1dcef714b47c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectData: {fileID: 1326311312359451934}
+  _rigidbody: {fileID: 5348561769740505992}
+  _spriteRenderer: {fileID: 5348561769740505993}
+  _bulletSpawnPoint: {fileID: 5348561768095185438}
+  _photonView: {fileID: 7399176038565316863}
 --- !u!114 &7359363697664665583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,19 +310,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4bd2992479f4f5cb2540dd2e7e0cc26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerObject: {fileID: 446554665031276607}
---- !u!114 &8448089740735747547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5348561769740505995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d17548c037483b93bb22b9974cb892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _playerObject: {fileID: 446554665031276607}

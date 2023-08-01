@@ -1,4 +1,4 @@
-﻿namespace CodeBase.Infrastructure
+﻿namespace CodeBase.Utilities.Network
 {
     public static class CustomRegisteredNetworkTypes
     {

@@ -1,61 +1,56 @@
-﻿using CodeBase.Gameplay.Bullet;
-using CodeBase.Gameplay.Player.Coins;
+﻿using CodeBase.Gameplay.Player.Coins;
+using CodeBase.Gameplay.Player.Data;
 using CodeBase.Gameplay.Player.Health;
 using CodeBase.Gameplay.Player.Movement;
+using CodeBase.Gameplay.Player.Network;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
-using Photon.Pun;
+using CodeBase.Infrastructure.Game;
+using CodeBase.Infrastructure.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Player.Object
 {
     public class PlayerObjectFactory
     {
-        private readonly PlayerStaticData _data;
-        private readonly Transform[] _spawnPoints;
-        private PlayerObject _playerObject;
+        private readonly IDataProvider _dataProvider;
+        private readonly PlayerNetwork _playerNetwork;
 
-        public PlayerObjectFactory(PlayerStaticData data, Transform[] spawnPoints)
+        private Transform[] _spawnPoints;
+        private PlayerStaticData _staticData;
+
+        public PlayerObjectFactory(IDataProvider dataProvider, PlayerNetwork playerNetwork)
         {
-            _data = data;
-            _spawnPoints = spawnPoints;
+            _dataProvider = dataProvider;
+            _playerNetwork = playerNetwork;
         }
 
-        public PlayerObject CreatePlayer(IPlayerUI ui, BulletNetwork bulletNetwork, int index)
+        public void Initialize()
         {
-            var gameObject = NetworkInstantiate(index);
-            var playerObject = CreatePlayerObject(gameObject, ui, bulletNetwork);
-
-            return playerObject;
+            _spawnPoints = _dataProvider.Get<GameSceneData>().PlayerSpawnPoints;
+            _staticData = _dataProvider.Get<PlayerStaticData>();
         }
 
-        private GameObject NetworkInstantiate(int index)
+        public PlayerObject CreatePlayer(IPlayerUI ui, IPlayerWeapon weapon)
         {
-            var prefabName = _data.PlayerObjectPrefab.name;
+            var index = _playerNetwork.GetPlayerIndex();
             var position = _spawnPoints[index].position;
-            var color = new PlayerColor(_data.PlayerColors[index]);
-            var instantiateData = new object[] { color };
-
-            return PhotonNetwork.Instantiate(prefabName, position, Quaternion.identity, 0, instantiateData);
-        }
-
-        private PlayerObject CreatePlayerObject(GameObject gameObject, IPlayerUI ui,
-            BulletNetwork bulletNetwork)
-        {
-            var objectData = gameObject.GetComponent<PlayerObjectData>();
+            var color = new PlayerColor(_staticData.PlayerColors[index]);
+            var gameObject = _playerNetwork.CreatePlayer(_staticData.PlayerObjectPrefab, position, color);
             var playerObject = gameObject.GetComponent<PlayerObject>();
-            var movement = new PlayerMovement(objectData.Rigidbody, _data.PositionVelocity);
-            var weapon = new PlayerWeapon(bulletNetwork, objectData.BulletSpawnPoint, objectData.Rigidbody, 300, -1);
-            var health = new PlayerHealth(5, 5);
-            var coins = new PlayerCoins(100, 0);
 
-            playerObject.Constructor(ui, movement, weapon, health, coins, _data.CreationLayerID);
-
-            _playerObject = playerObject;
+            ConstructPlayer(playerObject, ui, weapon);
 
             return playerObject;
         }
 
-        public PlayerObject GetPlayer() => _playerObject;
+        private void ConstructPlayer(PlayerObject playerObject, IPlayerUI ui, IPlayerWeapon weapon)
+        {
+            var movement = new PlayerMovement(playerObject.Rigidbody, _staticData.PositionVelocity);
+            var health = new PlayerHealth(_staticData.MaxHealth, _staticData.MaxHealth);
+            var coins = new PlayerCoins();
+
+            playerObject.Constructor(ui, movement, weapon, health, coins, _staticData.CreationLayerID);
+        }
     }
 }

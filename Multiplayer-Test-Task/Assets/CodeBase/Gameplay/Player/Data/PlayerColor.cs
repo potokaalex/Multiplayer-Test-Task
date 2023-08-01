@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Player
+namespace CodeBase.Gameplay.Player.Data
 {
     public struct PlayerColor
     {

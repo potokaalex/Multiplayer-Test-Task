@@ -16,9 +16,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/36/411e512a/Vector2Int.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/44/573c1737/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/cb/62297ba3/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c7d549bc7be64852b8dc16431effd9fc39a00/a0/3b464c89/NonAllocDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/IInteractWithPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/PlayerCollisionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Object/PlayerObjectFactory.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2TBwkpeRCV1AAJqnHKaMvwEcSFP" />
   <component name="ProjectViewState">
@@ -106,6 +108,7 @@
       <workItem from="1690636489658" duration="13941000" />
       <workItem from="1690696916150" duration="4905000" />
       <workItem from="1690701886957" duration="6459000" />
+      <workItem from="1690793085776" duration="18055000" />
     </task>
     <servers />
   </component>

@@ -1,19 +1,12 @@
-﻿using UnityEngine;
+﻿using CodeBase.Gameplay.Player.Data;
 
 namespace CodeBase.Gameplay.Player.Coins
 {
     public class PlayerCoins
     {
-        private readonly int _maxValue;
         private int _currentValue;
 
-        public PlayerCoins(int maxValue, int currentValue)
-        {
-            _maxValue = maxValue;
-            _currentValue = currentValue;
-        }
-
-        public void Change(int value) => _currentValue = Mathf.Clamp(_currentValue + value, 0, _maxValue);
+        public void Change(int value) => _currentValue += value;
 
         public int Get() => _currentValue;
     }

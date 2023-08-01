@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 550002435}
   - component: {fileID: 550002434}
   - component: {fileID: 550002433}
+  - component: {fileID: 550002436}
   - component: {fileID: 550002432}
   - component: {fileID: 550002431}
   m_Layer: 0
@@ -413,8 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b88dd232e484eb29b4b7fc47452595e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletNetwork: {fileID: 550002432}
-  CoinNetwork: {fileID: 550002431}
   MinPlayerCountToBattle: 2
 --- !u!114 &550002434
 MonoBehaviour:
@@ -453,6 +452,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550002436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550002430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e347db32814f37b2598ec960eca974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &590241918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,13 +1275,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b017febf07d41e49cb224f50df7f4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerStaticData: {fileID: 11400000, guid: 300ec177757f5f847813621bbcda8e2c, type: 2}
+  _bulletStaticData: {fileID: 11400000, guid: 41d27996e2ab888469952aa20490579c, type: 2}
+  _coinStaticData: {fileID: 11400000, guid: d148accefd15d774583eca03586730c4, type: 2}
   _sceneData:
-    Network: {fileID: 550002433}
-    PlayerStaticData: {fileID: 11400000, guid: 300ec177757f5f847813621bbcda8e2c, type: 2}
     PlayerSpawnPoints:
     - {fileID: 1823889812}
     - {fileID: 1466959391}
-    CoinStaticData: {fileID: 11400000, guid: d148accefd15d774583eca03586730c4, type: 2}
     CoinSpawnPoints:
     - {fileID: 1166589923}
     - {fileID: 910976145}
@@ -1281,8 +1292,7 @@ MonoBehaviour:
     - {fileID: 1289869451}
     - {fileID: 1532653978}
     - {fileID: 1067499259}
-    BulletStaticData: {fileID: 11400000, guid: 41d27996e2ab888469952aa20490579c, type: 2}
-  _gameUIMediator: {fileID: 815706001}
+    GameUI: {fileID: 815706001}
 --- !u!114 &1280135318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,7 +1305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e341b52497a49e7b9007bcaec31890c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStaticData: {fileID: 11400000, guid: 300ec177757f5f847813621bbcda8e2c, type: 2}
+  _gameNetwork: {fileID: 550002433}
+  _playerNetwork: {fileID: 550002436}
+  _bulletNetwork: {fileID: 550002432}
+  _coinNetwork: {fileID: 550002431}
 --- !u!114 &1280135319
 MonoBehaviour:
   m_ObjectHideFlags: 0

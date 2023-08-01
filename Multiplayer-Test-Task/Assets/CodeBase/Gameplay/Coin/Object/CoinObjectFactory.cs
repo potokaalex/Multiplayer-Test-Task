@@ -1,40 +1,69 @@
-﻿using CodeBase.Gameplay.Coin.Data;
+﻿using System.Collections.Generic;
+using CodeBase.Gameplay.Coin.Data;
 using CodeBase.Gameplay.Coin.Network;
-using Photon.Pun;
+using CodeBase.Gameplay.Player.Network;
+using CodeBase.Infrastructure.Game;
+using CodeBase.Infrastructure.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Coin.Object
 {
     public class CoinObjectFactory
     {
-        private readonly CoinStaticData _staticData;
-        private readonly Transform[] _spawnPoints;
+        private readonly Dictionary<CoinObject, int> _coins = new();
+        private readonly IDataProvider _dataProvider;
+        private readonly CoinNetwork _coinNetwork;
+        private readonly PlayerNetwork _playerNetwork;
 
-        public CoinObjectFactory(CoinStaticData staticData, Transform[] spawnPoints)
+        private CoinStaticData _coinStaticData;
+        private GameSceneData _sceneData;
+
+        public CoinObjectFactory(IDataProvider dataProvider, CoinNetwork coinNetwork, PlayerNetwork playerNetwork)
         {
-            _staticData = staticData;
-            _spawnPoints = spawnPoints;
+            _dataProvider = dataProvider;
+            _coinNetwork = coinNetwork;
+            _playerNetwork = playerNetwork;
         }
 
-        public CoinObject NetworkCreateCoin(CoinNetwork network, int id)
+        public void Initialize()
         {
-            var gameObject = NetworkInstantiate(id);
-            var coin = gameObject.GetComponent<CoinObject>();
-
-            coin.Constructor(network, id);
-
-            return coin;
+            _coinStaticData = _dataProvider.Get<CoinStaticData>();
+            _sceneData = _dataProvider.Get<GameSceneData>();
         }
 
-        public void NetworkDestroyCoin(CoinObject coinObject) => PhotonNetwork.Destroy(coinObject.gameObject);
-
-        private GameObject NetworkInstantiate(int id)
+        public void CreateCoin()
         {
-            var name = _staticData.CoinObjectPrefab.name;
-            var position = _spawnPoints[id].position;
-            var gameObject = PhotonNetwork.Instantiate(name, position, Quaternion.identity);
+            if (!IsCanCreateCoin(_sceneData.CoinSpawnPoints.Length))
+                return;
 
-            return gameObject;
+            var id = GetNewCoinId(_sceneData.CoinSpawnPoints.Length);
+            var position = _sceneData.CoinSpawnPoints[id].position;
+            var coin = _coinNetwork.CreateCoin(_coinStaticData.CoinObjectPrefab, position);
+
+            _coins.Add(coin, id);
+            coin.Constructor(this, _playerNetwork);
+        }
+
+        public void DestroyCoin(CoinObject coinObject)
+        {
+            _coinNetwork.DestroyCoin(coinObject);
+            _coins.Remove(coinObject);
+        }
+
+        private bool IsCanCreateCoin(int maxCount) => _coinNetwork.IsMasterClient() && _coins.Count < maxCount;
+
+        private int GetNewCoinId(int maxCount)
+        {
+            var id = Random.Range(0, maxCount);
+
+            if (!_coins.ContainsValue(id))
+                return id;
+
+            for (var i = 0; i < maxCount; i++)
+                if (!_coins.ContainsValue(i))
+                    return i;
+
+            return -1;
         }
     }
 }

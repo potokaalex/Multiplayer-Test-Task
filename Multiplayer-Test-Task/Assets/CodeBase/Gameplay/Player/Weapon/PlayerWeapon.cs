@@ -5,27 +5,31 @@ namespace CodeBase.Gameplay.Player.Weapon
 {
     public class PlayerWeapon : IPlayerWeapon
     {
-        private readonly BulletNetwork _network;
-        private readonly Transform _bulletSpawnPoint;
-        private readonly Rigidbody2D _player;
+        private readonly BulletFactory _bulletFactory;
         private readonly float _forceValue;
         private readonly int _damageValue;
 
-        public PlayerWeapon(BulletNetwork network, Transform bulletSpawnPoint,
-            Rigidbody2D playerBody, float forceValue, int damageValue)
+        private Transform _bulletSpawnPoint;
+        private Rigidbody2D _player;
+
+        public PlayerWeapon(BulletFactory bulletFactory, float forceValue, int damageValue)
         {
-            _network = network;
-            _bulletSpawnPoint = bulletSpawnPoint;
-            _player = playerBody;
+            _bulletFactory = bulletFactory;
             _forceValue = forceValue;
             _damageValue = damageValue;
         }
 
+        public void Initialize(Transform bulletSpawnPoint, Rigidbody2D player)
+        {
+            _bulletSpawnPoint = bulletSpawnPoint;
+            _player = player;
+        }
+
         public void Shoot()
         {
-            var bullet = _network.CreateBullet(_bulletSpawnPoint.position, _damageValue);
+            var bullet = _bulletFactory.CreateBullet(_bulletSpawnPoint.position);
 
-            bullet.AddForce(_player.transform.right, _forceValue);
+            bullet.Initialize(_player.transform.right, _forceValue, _damageValue);
         }
     }
 }

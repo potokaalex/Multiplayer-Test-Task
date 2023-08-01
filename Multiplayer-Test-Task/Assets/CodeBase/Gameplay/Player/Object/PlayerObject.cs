@@ -1,4 +1,5 @@
 ﻿using CodeBase.Gameplay.Player.Coins;
+using CodeBase.Gameplay.Player.Data;
 using CodeBase.Gameplay.Player.Health;
 using CodeBase.Gameplay.Player.Movement;
 using CodeBase.Gameplay.Player.UI;
@@ -8,9 +9,12 @@ using UnityEngine;
 
 namespace CodeBase.Gameplay.Player.Object
 {
-    public class PlayerObject : MonoBehaviourPun
+    public class PlayerObject : MonoBehaviour
     {
-        [SerializeField] private PlayerObjectData _objectData;
+        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Transform _bulletSpawnPoint;
+        [SerializeField] private PhotonView _photonView;
 
         private IPlayerUI _ui;
         private PlayerMovement _movement;
@@ -29,8 +33,12 @@ namespace CodeBase.Gameplay.Player.Object
 
             SetLayer(layerID);
         }
-
-        public void Initialize(PlayerColor color) => _objectData.SpriteRenderer.color = color.GetValue();
+        
+        public Rigidbody2D Rigidbody => _rigidbody;
+        
+        public Transform BulletSpawnPoint => _bulletSpawnPoint;
+        
+        public PhotonView PhotonView => _photonView;
 
         public void Move(Vector2 inputVector) => _movement.MovePosition(inputVector);
 
@@ -38,35 +46,24 @@ namespace CodeBase.Gameplay.Player.Object
 
         public void Shoot() => _weapon.Shoot();
 
-        public void RpcAddCoin() =>
-            photonView.RPC(nameof(AddCoin), RpcTarget.All);
-
-        public void RpcChangeHealth(int value) =>
-            photonView.RPC(nameof(ChangeHealth), RpcTarget.All, value);
-
-        [PunRPC]
-        private void AddCoin()
+        public void ChangeHealth(int value)
         {
-            if (!photonView.IsMine)
-                return;
+            _health.Change(value);
+            _ui.SetHealth(_health.Get());
+        }
 
+        public int GetHealth() => _health.Get();
+
+        public void AddCoin()
+        {
             _coins.Change(1);
             _ui.SetCoinsCount(_coins.Get());
         }
 
-        [PunRPC]
-        private void ChangeHealth(int value)
-        {
-            if (!photonView.IsMine)
-                return;
-
-            _health.Change(value);
-            _ui.SetHealth(_health.Get());
-            
-            //if(_health.Get() <= 0)
-                //+state
-        }
+        public int GetCoinsCount() => _coins.Get();
 
         private void SetLayer(int layerID) => gameObject.layer = layerID;
+
+        public void SetColor(PlayerColor color) => _spriteRenderer.color = color.GetValue();
     }
 }
