@@ -6,14 +6,14 @@ namespace CodeBase.Infrastructure.Game.UI
     public class LeaveRoomButton : MonoBehaviour
     {
         [SerializeField] private Button _selectableButton;
-        private GameUIMediator _mediator;
+        private IGameUI _ui;
 
-        public void Initialize(GameUIMediator mediator)
+        public void Initialize(IGameUI ui)
         {
-            _mediator = mediator;
-            _selectableButton.onClick.AddListener(_mediator.LeaveRoom);
+            _ui = ui;
+            _selectableButton.onClick.AddListener(_ui.LeaveRoom);
         }
 
-        public void Dispose() => _selectableButton.onClick.RemoveListener(_mediator.LeaveRoom);
+        public void Dispose() => _selectableButton.onClick.RemoveListener(_ui.LeaveRoom);
     }
 }

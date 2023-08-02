@@ -6,6 +6,8 @@ using CodeBase.Gameplay.Player.Network;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
 using CodeBase.Infrastructure.Game;
+using CodeBase.Infrastructure.Game.Data;
+using CodeBase.Infrastructure.Game.Network;
 using CodeBase.Infrastructure.Services.Data;
 using UnityEngine;
 
@@ -35,7 +37,7 @@ namespace CodeBase.Gameplay.Player.Object
         {
             var index = _playerNetwork.GetPlayerIndex();
             var position = _spawnPoints[index].position;
-            var color = new PlayerColor(_staticData.PlayerColors[index]);
+            var color = new NetworkColor(_staticData.PlayerColors[index]);
             var gameObject = _playerNetwork.CreatePlayer(_staticData.PlayerObjectPrefab, position, color);
             var playerObject = gameObject.GetComponent<PlayerObject>();
 
@@ -52,5 +54,7 @@ namespace CodeBase.Gameplay.Player.Object
 
             playerObject.Constructor(ui, movement, weapon, health, coins, _staticData.CreationLayerID);
         }
+
+        public void DestroyPlayer() => _playerNetwork.DestroyPlayer();
     }
 }

@@ -4,6 +4,7 @@ using CodeBase.Gameplay.Player.Health;
 using CodeBase.Gameplay.Player.Movement;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
+using CodeBase.Infrastructure.Game.Network;
 using Photon.Pun;
 using UnityEngine;
 
@@ -33,11 +34,11 @@ namespace CodeBase.Gameplay.Player.Object
 
             SetLayer(layerID);
         }
-        
+
         public Rigidbody2D Rigidbody => _rigidbody;
-        
+
         public Transform BulletSpawnPoint => _bulletSpawnPoint;
-        
+
         public PhotonView PhotonView => _photonView;
 
         public void Move(Vector2 inputVector) => _movement.MovePosition(inputVector);
@@ -64,6 +65,8 @@ namespace CodeBase.Gameplay.Player.Object
 
         private void SetLayer(int layerID) => gameObject.layer = layerID;
 
-        public void SetColor(PlayerColor color) => _spriteRenderer.color = color.GetValue();
+        public void SetColor(Color color) => _spriteRenderer.color = color;
+
+        public Color GetColor() => _spriteRenderer.color;
     }
 }

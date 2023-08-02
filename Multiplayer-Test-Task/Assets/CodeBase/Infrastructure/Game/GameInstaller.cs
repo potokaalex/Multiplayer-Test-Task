@@ -9,6 +9,7 @@ using CodeBase.Gameplay.Player.Object;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
 using CodeBase.Infrastructure.Game.Network;
+using CodeBase.Infrastructure.Game.UI;
 using UnityEngine;
 using Zenject;
 
@@ -23,11 +24,10 @@ namespace CodeBase.Infrastructure.Game
 
         public override void InstallBindings()
         {
-            Container.Bind<GameNetwork>().FromInstance(_gameNetwork).AsSingle();
-
             BindStateMachine();
-            BindBullet();
+            BindGame();
             BindPlayer();
+            BindBullet();
             BidCoin();
         }
 
@@ -37,10 +37,10 @@ namespace CodeBase.Infrastructure.Game
             Container.Bind<IStateFactory>().To<StateFactory>().AsSingle();
         }
 
-        private void BindBullet()
+        private void BindGame()
         {
-            Container.Bind<BulletNetwork>().FromInstance(_bulletNetwork).AsSingle();
-            Container.Bind<BulletFactory>().AsSingle();
+            Container.Bind<GameNetwork>().FromInstance(_gameNetwork).AsSingle();
+            Container.Bind<GameUIFactory>().AsSingle();
         }
 
         private void BindPlayer()
@@ -49,6 +49,12 @@ namespace CodeBase.Infrastructure.Game
             Container.Bind<PlayerObjectFactory>().AsSingle();
             Container.Bind<PlayerWeaponFactory>().AsSingle();
             Container.Bind<PlayerUIFactory>().AsSingle();
+        }
+
+        private void BindBullet()
+        {
+            Container.Bind<BulletNetwork>().FromInstance(_bulletNetwork).AsSingle();
+            Container.Bind<BulletFactory>().AsSingle();
         }
 
         private void BidCoin()

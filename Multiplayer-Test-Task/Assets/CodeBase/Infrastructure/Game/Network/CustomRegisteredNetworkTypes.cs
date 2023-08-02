@@ -1,7 +1,7 @@
-﻿namespace CodeBase.Utilities.Network
+﻿namespace CodeBase.Infrastructure.Game.Network
 {
     public static class CustomRegisteredNetworkTypes
     {
-        public const int PlayerColor = 100;
+        public const int NetworkColor = 100;
     }
 }

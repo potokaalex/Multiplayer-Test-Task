@@ -7,7 +7,7 @@ namespace CodeBase.Infrastructure.Services.Data
     {
         private readonly Dictionary<Type, IDataToProvide> _data = new();
 
-        public void Set<T>(T data) where T : IDataToProvide => _data.Add(typeof(T), data);
+        public void Set<T>(T data) where T : IDataToProvide => _data[typeof(T)] = data;
 
         public DataType Get<DataType>() where DataType : IDataToProvide => (DataType)_data[typeof(DataType)];
     }

@@ -21,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/IInteractWithPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Interact/PlayerCollisionHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Gameplay/Player/Object/PlayerObjectFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CodeBase/Infrastructure/Game/Network/NetworkColor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2TBwkpeRCV1AAJqnHKaMvwEcSFP" />
   <component name="ProjectViewState">
@@ -109,6 +110,10 @@
       <workItem from="1690696916150" duration="4905000" />
       <workItem from="1690701886957" duration="6459000" />
       <workItem from="1690793085776" duration="18055000" />
+      <workItem from="1690870916221" duration="17646000" />
+      <workItem from="1690959816503" duration="903000" />
+      <workItem from="1690961318874" duration="15427000" />
+      <workItem from="1690980841355" duration="7324000" />
     </task>
     <servers />
   </component>

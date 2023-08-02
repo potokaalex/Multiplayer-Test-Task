@@ -1,39 +1,71 @@
-﻿using CodeBase.Gameplay.Player.Data;
+﻿using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Game.States;
+using CodeBase.Infrastructure.Game.States.GameOver;
+using CodeBase.Infrastructure.Services.Data;
 using CodeBase.Infrastructure.Services.StateMachine;
-using CodeBase.Utilities.Network;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace CodeBase.Infrastructure.Game.Network
 {
     public class GameNetwork : MonoBehaviourPunCallbacks
     {
-        [SerializeField] private int MinPlayerCountToBattle;
-
+        private GameSceneStaticData _gameSceneStaticData;
         private IStateMachine _stateMachine;
+        private IDataProvider _dataProvider;
 
         [Inject]
-        private void Constructor(IStateMachine stateMachine) => _stateMachine = stateMachine;
-
-        public override void OnPlayerEnteredRoom(Player newPlayer)
+        private void Constructor(IStateMachine stateMachine, IDataProvider dataProvider)
         {
-            base.OnPlayerEnteredRoom(newPlayer);
+            _stateMachine = stateMachine;
+            _dataProvider = dataProvider;
+        }
 
-            if (PhotonNetwork.PlayerList.Length >= MinPlayerCountToBattle)
-                photonView.RPC(nameof(StartBattle), RpcTarget.All);
+        public void Initialize() => _gameSceneStaticData = _dataProvider.Get<GameSceneStaticData>();
+
+        public override void OnPlayerEnteredRoom(Player otherPlayer)
+        {
+            base.OnPlayerEnteredRoom(otherPlayer);
+
+            if (PhotonNetwork.PlayerList.Length >= _gameSceneStaticData.MinPlayerCountToBattle)
+                photonView.RPC(nameof(RpcStartBattle), RpcTarget.All);
         }
 
         public void RegisterCustomTypes()
         {
-            PhotonPeer.RegisterType(typeof(PlayerColor), CustomRegisteredNetworkTypes.PlayerColor,
-                PlayerColor.Serialize, PlayerColor.Deserialize);
+            PhotonPeer.RegisterType(typeof(NetworkColor), CustomRegisteredNetworkTypes.NetworkColor,
+                NetworkColor.Serialize, NetworkColor.Deserialize);
+        }
+
+        public void StartGameOver(Color winnerColor, int winnerCoinsCount)
+        {
+            var color = new NetworkColor(winnerColor);
+
+            photonView.RPC(nameof(RpcStartGameOver), RpcTarget.All, color, winnerCoinsCount);
         }
 
         [PunRPC]
-        private void StartBattle() => _stateMachine.SwitchTo<BattleState>();
+        private void RpcStartBattle() => _stateMachine.SwitchTo<BattleState>();
+
+        [PunRPC]
+        private void RpcStartGameOver(NetworkColor winnerColor, int winnerCoinsCount)
+        {
+            _stateMachine.SwitchTo<GameOverState, GameOverStateParameter>(new GameOverStateParameter
+            {
+                WinnerColor = winnerColor.GetValue(),
+                WinnerCoinsCount = winnerCoinsCount
+            });
+        }
+
+        //
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene("Lobby");
+        }
     }
 }

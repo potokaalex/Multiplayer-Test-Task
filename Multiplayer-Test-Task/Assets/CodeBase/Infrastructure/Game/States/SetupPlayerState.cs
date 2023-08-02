@@ -12,14 +12,16 @@ namespace CodeBase.Infrastructure.Game.States
         private readonly PlayerUIFactory _playerUIFactory;
         private readonly PlayerWeaponFactory _weaponFactory;
         private readonly PlayerNetwork _playerNetwork;
+        private readonly IStateMachine _stateMachine;
 
         public SetupPlayerState(PlayerObjectFactory playerObjectFactory, PlayerUIFactory playerUIFactory,
-            PlayerWeaponFactory weaponFactory, PlayerNetwork playerNetwork)
+            PlayerWeaponFactory weaponFactory, PlayerNetwork playerNetwork, IStateMachine stateMachine)
         {
             _playerObjectFactory = playerObjectFactory;
             _playerUIFactory = playerUIFactory;
             _weaponFactory = weaponFactory;
             _playerNetwork = playerNetwork;
+            _stateMachine = stateMachine;
         }
 
         public void Enter()
@@ -27,15 +29,15 @@ namespace CodeBase.Infrastructure.Game.States
             _playerObjectFactory.Initialize();
             _playerUIFactory.Initialize();
             _weaponFactory.Initialize();
+            _playerNetwork.Initialize(CreatePlayer());
 
-            var player = SetupPlayer();
-
-            _playerNetwork.Initialize(player);
+            _stateMachine.SwitchTo<WaitingState>();
         }
 
-        private PlayerObject SetupPlayer()
+        private PlayerObject CreatePlayer()
         {
-            var ui = _playerUIFactory.CreateUI();
+            _playerUIFactory.CreateUI();
+            var ui = _playerUIFactory.GetUI();
             var weapon = _weaponFactory.CreateWeapon();
             var playerObject = _playerObjectFactory.CreatePlayer(ui, weapon);
 

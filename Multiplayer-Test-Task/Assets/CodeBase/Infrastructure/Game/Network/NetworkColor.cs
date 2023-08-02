@@ -1,16 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Player.Data
+namespace CodeBase.Infrastructure.Game.Network
 {
-    public struct PlayerColor
+    public struct NetworkColor
     {
         private float _r;
         private float _g;
         private float _b;
         private float _a;
 
-        public PlayerColor(Color color)
+        public NetworkColor(Color color)
         {
             _r = color.r;
             _g = color.g;
@@ -23,7 +23,7 @@ namespace CodeBase.Gameplay.Player.Data
         public static byte[] Serialize(object data)
         {
             var result = new byte[sizeof(float) * 4];
-            var color = (PlayerColor)data;
+            var color = (NetworkColor)data;
 
             AddBytes(result, color._r, 0);
             AddBytes(result, color._g, 1);
@@ -35,7 +35,7 @@ namespace CodeBase.Gameplay.Player.Data
 
         public static object Deserialize(byte[] data)
         {
-            var result = new PlayerColor
+            var result = new NetworkColor
             {
                 _r = GetFloat(data, 0),
                 _g = GetFloat(data, 1),

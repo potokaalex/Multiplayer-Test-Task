@@ -7,7 +7,7 @@ namespace CodeBase.Infrastructure.Lobby
     public class LobbyStartup : MonoBehaviourPunCallbacks
     {
         [SerializeField] private LobbyUIMediator _uiMediator;
-
+        
         //TODO: create services & states
         
         private void Start()

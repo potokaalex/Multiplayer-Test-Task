@@ -33,6 +33,10 @@ namespace CodeBase.Infrastructure.Game.States
             _playerUIFactory.GetUI().IsBattle = true;
         }
 
-        public void Exit() => _coinSpawnerFactory.DestroySpawner(_spawner);
+        public void Exit()
+        {
+            _coinSpawnerFactory.DestroySpawner(_spawner);
+            _playerUIFactory.DestroyUI();
+        }
     }
 }

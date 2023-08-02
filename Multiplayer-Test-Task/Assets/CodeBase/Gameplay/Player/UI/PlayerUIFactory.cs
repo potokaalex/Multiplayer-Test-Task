@@ -13,12 +13,9 @@ namespace CodeBase.Gameplay.Player.UI
 
         public void Initialize() => _playerStaticData = _dataProvider.Get<PlayerStaticData>();
 
-        public PlayerUI CreateUI()
-        {
-            _ui = UnityEngine.Object.Instantiate(_playerStaticData.UIPrefab);
+        public void CreateUI() => _ui = UnityEngine.Object.Instantiate(_playerStaticData.UIPrefab);
 
-            return _ui;
-        }
+        public void DestroyUI() => UnityEngine.Object.Destroy(_ui.gameObject);
 
         public PlayerUI GetUI() => _ui;
     }

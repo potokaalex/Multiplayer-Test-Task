@@ -3,6 +3,7 @@ using CodeBase.Gameplay.Coin.Data;
 using CodeBase.Gameplay.Coin.Network;
 using CodeBase.Gameplay.Player.Network;
 using CodeBase.Infrastructure.Game;
+using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Services.Data;
 using UnityEngine;
 
