@@ -5,7 +5,6 @@ using CodeBase.Gameplay.Player.Movement;
 using CodeBase.Gameplay.Player.Network;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
-using CodeBase.Infrastructure.Game;
 using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Game.Network;
 using CodeBase.Infrastructure.Project.Services.Data;

@@ -1,5 +1,4 @@
-﻿using CodeBase.Gameplay.Player.Data;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CodeBase.Gameplay.Player.Health
 {

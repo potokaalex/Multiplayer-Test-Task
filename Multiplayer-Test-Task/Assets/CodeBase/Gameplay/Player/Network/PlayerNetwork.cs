@@ -24,6 +24,14 @@ namespace CodeBase.Gameplay.Player.Network
             _gameNetwork = gameNetwork;
         }
 
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        {
+            base.OnPlayerLeftRoom(otherPlayer);
+
+            if (!_isWin)
+                photonView.RPC(nameof(RpcDestroyPlayer), RpcTarget.All, otherPlayer.ActorNumber);
+        }
+
         public void Initialize(PlayerObject playerObject) => _playerObject = playerObject;
 
         public int GetPlayerIndex() => PhotonNetwork.CurrentRoom.PlayerCount - 1;
@@ -70,12 +78,17 @@ namespace CodeBase.Gameplay.Player.Network
                 return;
 
             foreach (var player in PhotonNetwork.PlayerList)
+            {
                 if (player.ActorNumber == _activePlayers[0])
+                {
                     photonView.RPC(nameof(RpcPlayerWin), player);
+                    _isWin = true;
+                }
+            }
         }
 
         [PunRPC]
-        private void RpcPlayerWin() => 
+        private void RpcPlayerWin() =>
             _gameNetwork.StartGameOver(_playerObject.GetColor(), _playerObject.GetCoinsCount());
 
         [PunRPC]

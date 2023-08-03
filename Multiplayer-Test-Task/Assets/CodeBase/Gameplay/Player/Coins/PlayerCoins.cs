@@ -1,6 +1,4 @@
-﻿using CodeBase.Gameplay.Player.Data;
-
-namespace CodeBase.Gameplay.Player.Coins
+﻿namespace CodeBase.Gameplay.Player.Coins
 {
     public class PlayerCoins
     {

@@ -17,6 +17,10 @@ namespace CodeBase.Infrastructure.Game.States
             _waitingUI.InitializeUI();
         }
 
-        public void Exit() => _gameUIFactory.DestroyWaitingUI(_waitingUI);
+        public void Exit()
+        {
+            _waitingUI.DisposeUI();
+            _gameUIFactory.DestroyWaitingUI(_waitingUI);
+        }
     }
 }

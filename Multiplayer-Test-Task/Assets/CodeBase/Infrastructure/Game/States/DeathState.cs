@@ -17,6 +17,7 @@ namespace CodeBase.Infrastructure.Game.States
 
         public void Enter()
         {
+            _playerUIFactory.GetUI().Dispose();
             _playerUIFactory.DestroyUI();
             _playerObjectFactory.DestroyPlayer();
         }

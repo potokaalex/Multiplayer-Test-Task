@@ -2,9 +2,7 @@
 using CodeBase.Infrastructure.Game.States;
 using CodeBase.Infrastructure.Game.States.GameOver;
 using CodeBase.Infrastructure.Project.Services.Data;
-using CodeBase.Infrastructure.Project.Services.Network;
 using CodeBase.Infrastructure.Project.Services.StateMachine;
-using CodeBase.Infrastructure.Project.States;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
