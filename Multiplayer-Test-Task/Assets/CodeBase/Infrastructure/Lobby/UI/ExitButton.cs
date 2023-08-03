@@ -6,9 +6,9 @@ namespace CodeBase.Infrastructure.Lobby.UI
     public class ExitButton : MonoBehaviour
     {
         [SerializeField] private Button _selectableButton;
-        private LobbyUIMediator _mediator;
+        private LobbyUI _mediator;
 
-        public void Initialize(LobbyUIMediator mediator)
+        public void Initialize(LobbyUI mediator)
         {
             _mediator = mediator;
             _selectableButton.onClick.AddListener(_mediator.ApplicationExit);

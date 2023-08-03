@@ -1,6 +1,6 @@
 ﻿using CodeBase.Gameplay.Bullet;
 using CodeBase.Gameplay.Player.Data;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 
 namespace CodeBase.Gameplay.Player.Weapon
 {

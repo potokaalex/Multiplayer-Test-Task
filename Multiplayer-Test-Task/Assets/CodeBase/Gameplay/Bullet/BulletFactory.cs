@@ -1,5 +1,5 @@
 ﻿using CodeBase.Gameplay.Player.Network;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Bullet

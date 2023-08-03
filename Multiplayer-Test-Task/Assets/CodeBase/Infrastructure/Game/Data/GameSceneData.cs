@@ -1,5 +1,5 @@
 ﻿using System;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Game.Data

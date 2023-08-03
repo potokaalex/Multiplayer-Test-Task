@@ -2,7 +2,7 @@
 using CodeBase.Gameplay.Player.Object;
 using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 
 namespace CodeBase.Infrastructure.Game.States
 {

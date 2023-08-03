@@ -1,5 +1,5 @@
 ﻿using CodeBase.Infrastructure.Game.Network;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 
 namespace CodeBase.Infrastructure.Game.States
 {

@@ -1,12 +1,11 @@
-﻿using CodeBase._dev;
-using CodeBase.Gameplay.Bullet;
+﻿using CodeBase.Gameplay.Bullet;
 using CodeBase.Gameplay.Coin.Data;
 using CodeBase.Gameplay.Player.Data;
 using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Game.States;
 using CodeBase.Infrastructure.Game.States.GameOver;
-using CodeBase.Infrastructure.Services.Data;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.Data;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 using UnityEngine;
 using Zenject;
 

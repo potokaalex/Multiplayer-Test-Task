@@ -1,6 +1,6 @@
 ﻿using CodeBase.Gameplay.Coin.Object;
 using CodeBase.Gameplay.Coin.Spawner;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Coin.Data

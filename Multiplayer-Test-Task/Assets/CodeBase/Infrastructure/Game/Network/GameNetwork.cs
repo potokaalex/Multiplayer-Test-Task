@@ -1,13 +1,14 @@
 ﻿using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Game.States;
 using CodeBase.Infrastructure.Game.States.GameOver;
-using CodeBase.Infrastructure.Services.Data;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Network;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
+using CodeBase.Infrastructure.Project.States;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace CodeBase.Infrastructure.Game.Network
@@ -17,7 +18,6 @@ namespace CodeBase.Infrastructure.Game.Network
         private GameSceneStaticData _gameSceneStaticData;
         private IStateMachine _stateMachine;
         private IDataProvider _dataProvider;
-
         [Inject]
         private void Constructor(IStateMachine stateMachine, IDataProvider dataProvider)
         {
@@ -60,12 +60,7 @@ namespace CodeBase.Infrastructure.Game.Network
                 WinnerCoinsCount = winnerCoinsCount
             });
         }
-
-        //
-        public void LeaveRoom()
-        {
-            PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene("Lobby");
-        }
+        
+        public void LeaveRoom() => PhotonNetwork.LeaveRoom();
     }
 }

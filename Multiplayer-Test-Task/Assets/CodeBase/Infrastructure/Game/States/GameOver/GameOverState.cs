@@ -1,5 +1,5 @@
 ﻿using CodeBase.Infrastructure.Game.UI;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 
 namespace CodeBase.Infrastructure.Game.States.GameOver
 {
@@ -8,10 +8,7 @@ namespace CodeBase.Infrastructure.Game.States.GameOver
         private readonly GameUIFactory _gameUIFactory;
         private GameOverUI _gameOverUI;
 
-        public GameOverState(GameUIFactory gameUIFactory)
-        {
-            _gameUIFactory = gameUIFactory;
-        }
+        public GameOverState(GameUIFactory gameUIFactory) => _gameUIFactory = gameUIFactory;
 
         public void Enter(GameOverStateParameter parameter)
         {

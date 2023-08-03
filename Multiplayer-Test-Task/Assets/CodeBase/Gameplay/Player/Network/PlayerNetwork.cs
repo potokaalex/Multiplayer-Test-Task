@@ -2,7 +2,7 @@
 using CodeBase.Gameplay.Player.Object;
 using CodeBase.Infrastructure.Game.Network;
 using CodeBase.Infrastructure.Game.States;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 using Photon.Pun;
 using UnityEngine;
 using Zenject;
@@ -15,6 +15,7 @@ namespace CodeBase.Gameplay.Player.Network
         private PlayerObject _playerObject;
         private GameNetwork _gameNetwork;
         private IStateMachine _stateMachine;
+        private bool _isWin;
 
         [Inject]
         private void Constructor(IStateMachine stateMachine, GameNetwork gameNetwork)
@@ -24,13 +25,6 @@ namespace CodeBase.Gameplay.Player.Network
         }
 
         public void Initialize(PlayerObject playerObject) => _playerObject = playerObject;
-
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-        {
-            base.OnPlayerLeftRoom(otherPlayer);
-
-            photonView.RPC(nameof(RpcDestroyPlayer), RpcTarget.All, otherPlayer.ActorNumber);
-        }
 
         public int GetPlayerIndex() => PhotonNetwork.CurrentRoom.PlayerCount - 1;
 
@@ -65,15 +59,11 @@ namespace CodeBase.Gameplay.Player.Network
 
             playerObject.SetColor(color.GetValue());
             _activePlayers.Add(playerPhoton.Controller.ActorNumber);
-
-            UnityEngine.Debug.Log(playerPhoton.Controller.ActorNumber);
         }
 
         [PunRPC]
         private void RpcDestroyPlayer(int actorNumber)
         {
-            UnityEngine.Debug.Log(actorNumber);
-
             _activePlayers.Remove(actorNumber);
 
             if (!PhotonNetwork.IsMasterClient || _activePlayers.Count > 1)
@@ -85,7 +75,7 @@ namespace CodeBase.Gameplay.Player.Network
         }
 
         [PunRPC]
-        private void RpcPlayerWin() =>
+        private void RpcPlayerWin() => 
             _gameNetwork.StartGameOver(_playerObject.GetColor(), _playerObject.GetCoinsCount());
 
         [PunRPC]

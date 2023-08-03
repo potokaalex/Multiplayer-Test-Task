@@ -1,6 +1,4 @@
-﻿using CodeBase.Infrastructure.Services.StateMachine.Implementations;
-using CodeBase.Infrastructure.Services.StateMachine;
-using CodeBase.Gameplay.Bullet;
+﻿using CodeBase.Gameplay.Bullet;
 using CodeBase.Gameplay.Coin.Network;
 using CodeBase.Gameplay.Coin.Object;
 using CodeBase.Gameplay.Coin.Spawner;
@@ -10,6 +8,8 @@ using CodeBase.Gameplay.Player.UI;
 using CodeBase.Gameplay.Player.Weapon;
 using CodeBase.Infrastructure.Game.Network;
 using CodeBase.Infrastructure.Game.UI;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine.Implementations;
 using UnityEngine;
 using Zenject;
 

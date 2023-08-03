@@ -1,6 +1,6 @@
 ﻿using CodeBase.Infrastructure.Game.Data;
 using CodeBase.Infrastructure.Game.Network;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Infrastructure.Game.UI

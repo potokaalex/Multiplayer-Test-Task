@@ -2,7 +2,7 @@
 using CodeBase.Gameplay.Coin.Object;
 using CodeBase.Gameplay.Coin.Spawner;
 using CodeBase.Gameplay.Player.UI;
-using CodeBase.Infrastructure.Services.StateMachine;
+using CodeBase.Infrastructure.Project.Services.StateMachine;
 
 namespace CodeBase.Infrastructure.Game.States
 {

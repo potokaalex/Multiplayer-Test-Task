@@ -1,6 +1,6 @@
 ﻿using CodeBase.Gameplay.Player.Object;
 using CodeBase.Gameplay.Player.UI;
-using CodeBase.Infrastructure.Services.Data;
+using CodeBase.Infrastructure.Project.Services.Data;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Player.Data
