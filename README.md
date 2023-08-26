@@ -3,8 +3,9 @@ This is a test for the junior position.
 
 # Task text
 - The game must have the following scenes: Loading, Lobby, Game.
-- In the lobby, it should be possible to create a room and enter it, as well as connect to a room already created by another player.
-- After entering the room, the players get to the combat server and the gameplay begins. There is a field limited by the size of the screen, it has scattered loot coins that each player can collect.
+- In the lobby, it should be possible to create or join room.
+- After entering the room, the players get to the combat server and the gameplay begins.
+- There is a field limited by the size of the screen, it has scattered loot coins that each player can collect.
 - When 2 players appear on the playing field, each of them can turn, move and shoot in the direction of sight.
 - An on-screen virtual joystick is used to control the player.
 - The player has a health bar and a coin collection scale.
