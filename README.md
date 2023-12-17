@@ -1,6 +1,8 @@
 # Multiplayer-Test-Task
 This is a test for the junior position.
 
+![2](https://github.com/Kot-Alenya/Multiplayer-Test-Task/assets/98838657/77e3c8fe-4b26-46c1-a723-33350eca0219)
+
 # Task text
 - The game must have the following scenes: Loading, Lobby, Game.
 - In the lobby, it should be possible to create or join room.
